@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pass Generator</title>
+</head>
+<style>
+    .main
+    {
+        background-color: black;
+        height:100vh;
+        width:100%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .cont
+    {
+        box-shadow:5px 5px aquamarine;
+        border-radius: 10px;
+        
+        color:black;
+        background-color:aqua;
+        height:auto;
+        width:300px;
+        padding: 20px;
+        margin:20px;
+    }
+    .pl
+    {
+        display: inline-block;
+    }
+    .row-1
+    {
+        display: inline-block;
+    }
+    .row
+    {
+        padding:10px;
+    }
+    .pass
+    {
+        height: 28px;
+    display: block;
+    border: 2px solid black;
+    width: 92%;
+    padding: 9px;
+    font-size: x-large;
+    }
+    .passl
+    {
+        margin-left: 5px;
+        width:45px;
+    }
+    .btn
+    {
+        
+    display: block;
+    width: 100%;
+    height: 26px;
+    background-color: bisque;
+
+    }
+</style>
+<body>
+    <div class="main">
+        <div class="cont">
+           <span class="pass">TRY</span>
+            <div class="row row-1">
+                <span class="pl"> 
+                    Password Length
+                </span>
+                <input type="number"  class="passl" value="5">
+            </div>
+            <div class="row">
+                 <span>UPPER CASE</span>
+                 <input  id="uppercase" name="" type="checkbox"/> 
+            </div>
+            <div class="row">
+                <span>LOWER CASE</span>
+                <input id="lowercase" name="" type="checkbox"/> 
+           </div>
+           <div class="row">
+            <span>NUMBERS</span>
+            <input id="number" name="" type="checkbox"> 
+       </div>
+       <div class="row">
+        <span>SYMBOLS</span>
+        <input id="symbol" name="" type="checkbox"> 
+   </div>
+   <button class="btn">
+    Generate
+   </button>
+        </div>
+    </div>
+</body>
+
+<script>
+    const upperset = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+    const lowerset = "abcdefghijklmnopqrstuvwxyz";
+    const number = "1234567890";
+    const symbols = "!@#$%^&*()_+{}|:<>?/.,';[]\=-";
+    function chose(dataset)
+    {
+        let x = Math.floor(Math.random()*dataset.length);
+        return dataset[x];
+    }
+    let passbox = document.querySelector(".pass");
+    let total  =  document.querySelector(".passl");
+    let upper = document.getElementById("uppercase");
+    let lower = document.getElementById("lowercase");
+    let numb = document.getElementById("number");
+    let sym = document.getElementById("symbol");
+
+    function generate(password="")
+    {
+        if(upper.checked && password.length<total.value)
+        {
+            password+=chose(upperset);
+        }
+        
+        if(lower.checked  && password.length<total.value)
+        {
+            password+=chose(lowerset);
+        }
+
+        
+        if(numb.checked  && password.length<total.value)
+        {
+            password+=chose(number);
+        }
+
+        
+        if(symbol.checked  && password.length<total.value)
+        {
+            password+=chose(symbols);
+        }
+        if(password.length<total.value)
+        {
+            return generate(password);
+        }
+        passbox.innerText = password;
+    }
+
+    document.querySelector(".btn").addEventListener("click",function()
+    {
+        generate();                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                              mmjjj                                                                                                            
+    });
+
+
+</script>
+</html>
